@@ -1,15 +1,19 @@
 name: Pengenalan GitHub Actions
 run-name: ${{ github.actor }} sedang mencoba GitHub Actions 🔥
 on: [push]
+
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
       - run: echo "🎉 Job ini otomatis dijalankan oleh ${{ github.event_name }}."
       - run: echo "Dijalankan di server ${{ runner.os }}."
-      - run: echo "Nama branch-mu adalah ${{ github.ref }}."
-      - run: echo "Nama dan reponya ${{ github.repository }}."
+      - run: echo "Nama branch ${{ github.ref }}."
+      - run: echo "Nama reponya ${{ github.repository }}."
+
       - name: Daftar file yang ada di repo
         run: |
-          ls ${{ github.workspace }}
-      - run: echo "Status job ini ${{ job.status }}"
+          ls -lah ${{ github.workspace }}
